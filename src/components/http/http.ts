@@ -15,7 +15,7 @@ type BackendObj = {
 export const fetchPhotosByQuery = async (
   topic: string,
   currentPage: number
-): Promise<BackendObj> => {
+): Promise<BackendObj[]> => {
   const axiosOptions = {
     params: {
       query: topic,
@@ -30,5 +30,5 @@ export const fetchPhotosByQuery = async (
     axiosOptions
   );
 
-  return response.data;
+  return response.data.results;
 };

@@ -1,20 +1,8 @@
 import css from "./ImageCard.module.css";
 import React from "react";
-
+import { BackendObj } from "../../types/BackendObj";
 type Props = {
-  info: {
-    color: string;
-    alt_description: string;
-    urls: {
-      regular: string;
-      small: string;
-    };
-    user: {
-      username: string;
-      total_likes: number;
-    };
-    id: string;
-  };
+  info: BackendObj;
   openModal: (arg: string) => void;
 };
 

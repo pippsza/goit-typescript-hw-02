@@ -1,19 +1,7 @@
 import ImageCard from "../ImageCard/ImageCard";
 import css from "../ImageGallery/ImageGallery.module.css";
 import React from "react";
-type BackendObj = {
-  color: string;
-  alt_description: string;
-  urls: {
-    regular: string;
-    small: string;
-  };
-  user: {
-    username: string;
-    total_likes: number;
-  };
-  id: string;
-};
+import { BackendObj } from "../../types/BackendObj";
 type Props = {
   items: BackendObj[];
   openModal: (arg: string) => void;

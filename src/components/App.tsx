@@ -10,19 +10,7 @@ import ClipLoader from "react-spinners/ClipLoader";
 import ErrorMessage from "./ErrorMessage/ErrorMessage";
 import LoadMoreBtn from "./LoadMoreBtn/LoadMoreBtn";
 import ImageModal from "./ImageModal/ImageModal";
-type BackendObj = {
-  color: string;
-  alt_description: string;
-  urls: {
-    regular: string;
-    small: string;
-  };
-  user: {
-    username: string;
-    total_likes: number;
-  };
-  id: string;
-};
+import { BackendObj } from "../types/BackendObj";
 
 export default function App() {
   const [articles, setArticles] = useState<BackendObj[]>([]);
