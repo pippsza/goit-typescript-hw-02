@@ -43,14 +43,14 @@ export default function App() {
       try {
         setError(false);
         setIsLoading(true);
-        const data: BackendObj = await fetchPhotosByQuery(
+        const data: BackendObj[] = await fetchPhotosByQuery(
           searchTerm.split("/")[0],
           page
         );
         setArticles((prevArticles): BackendObj[] => {
           console.log(data);
 
-          return [...prevArticles, ...data.results];
+          return [...prevArticles, ...data];
         });
       } catch {
         setError(true);
