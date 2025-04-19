@@ -1,17 +1,8 @@
 import axios from "axios";
-type BackendObj = {
-  color: string;
-  alt_description: string;
-  urls: {
-    regular: string;
-    small: string;
-  };
-  user: {
-    username: string;
-    total_likes: number;
-  };
-  id: string;
-};
+import { BackendObj } from "../../types/BackendObj";
+interface IResponceData {
+  results: BackendObj[];
+}
 export const fetchPhotosByQuery = async (
   topic: string,
   currentPage: number
@@ -25,7 +16,7 @@ export const fetchPhotosByQuery = async (
     },
   };
 
-  const response = await axios.get(
+  const response = await axios.get<IResponceData>(
     `https://api.unsplash.com/search/photos`,
     axiosOptions
   );

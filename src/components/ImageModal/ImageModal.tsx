@@ -2,15 +2,15 @@ import Modal from "react-modal";
 import css from "./ImageModal.module.css";
 import React from "react";
 type Props = {
-  modalUrl: string | boolean;
-  setModalUrl: (arg: string | boolean) => void;
+  modalUrl: string;
+  setModalUrl: (arg: string) => void;
 };
 export default function ImageModal({ modalUrl, setModalUrl }: Props) {
   return (
     <div className={css.imgContainer}>
       <Modal
-        isOpen={true}
-        onRequestClose={() => setModalUrl(false)}
+        boolean={modalUrl}
+        onRequestClose={() => setModalUrl("")}
         style={{
           overlay: {
             backgroundColor: "rgba(0, 0, 0, 0.5)",
@@ -25,9 +25,7 @@ export default function ImageModal({ modalUrl, setModalUrl }: Props) {
           },
         }}
       >
-        {modalUrl !== false && modalUrl !== true && (
-          <img className={css.img} src={modalUrl} alt="" />
-        )}
+        {modalUrl && <img className={css.img} src={modalUrl} alt="" />}
       </Modal>
     </div>
   );

@@ -14,7 +14,7 @@ import { BackendObj } from "../types/BackendObj";
 
 export default function App() {
   const [articles, setArticles] = useState<BackendObj[]>([]);
-  const [modalUrl, setModalUrl] = useState<string | boolean>("");
+  const [modalUrl, setModalUrl] = useState<string>("");
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [error, setError] = useState<boolean>(false);
   const [searchTerm, setSearchTerm] = useState<string>("");
@@ -43,10 +43,7 @@ export default function App() {
       try {
         setError(false);
         setIsLoading(true);
-        const data: BackendObj[] = await fetchPhotosByQuery(
-          searchTerm.split("/")[0],
-          page
-        );
+        const data = await fetchPhotosByQuery(searchTerm.split("/")[0], page);
         setArticles((prevArticles): BackendObj[] => {
           console.log(data);
 
@@ -71,9 +68,9 @@ export default function App() {
       {articles.length > 0 && !isLoading && (
         <LoadMoreBtn onClick={handleLoadMoreClick}></LoadMoreBtn>
       )}
-      {modalUrl != "" && (
-        <ImageModal modalUrl={modalUrl} setModalUrl={setModalUrl}></ImageModal>
-      )}
+
+      <ImageModal modalUrl={modalUrl} setModalUrl={openModal}></ImageModal>
+
       {error && <ErrorMessage></ErrorMessage>}
       <Toaster position="top-center" reverseOrder={false} />
       <ClipLoader
